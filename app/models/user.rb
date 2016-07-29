@@ -6,8 +6,8 @@ class User
 
   property :id, Serial
   property :user_name, String
-  property :email, String, :required => true
-  property :password_digist, String, length: 60
+  property :email, String, required: true, unique: true
+  property :password_digest, String, length: 60
   attr_accessor :password_confirmation
   attr_reader :password
   validates_confirmation_of :password

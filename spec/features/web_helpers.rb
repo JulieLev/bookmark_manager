@@ -14,5 +14,5 @@ def sign_up(email: "David@mail.com")
   fill_in :password, with:              "123456789"
   fill_in :email, with:                 email
   fill_in :password_confirmation, with: "123456789"
-  click_button "Register"
+  click_button "Sign_Up"
 end
