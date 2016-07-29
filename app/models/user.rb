@@ -12,7 +12,7 @@ class User
   attr_reader :password
   validates_confirmation_of :password
   validates_format_of :email, :as => :email_address
-
+  validates_uniqueness_of :email
 
   def password=(password)
     @password = password
