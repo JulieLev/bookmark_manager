@@ -1,7 +1,7 @@
 
-feature "adding tags" do
-  scenario "User adds a link with a tag" do
-    visit_and_fill
+feature "New tag" do
+  scenario 'adding a new tag to bookmark' do
+    visit_and_fill_in_link
     add_tag
     click_button "Add Link"
     expect(page).to have_content "search engine"

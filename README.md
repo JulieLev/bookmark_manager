@@ -1,41 +1,41 @@
-## bookmark-manager
+#Bookmark Challenge
 
-epic
----------
-```
-As a Makers Student
-So that I can be on time for standups
-I want to purchase a new alarm clock
-```
-showing a list of links
---------
-```
-As a bookmark-manager user
-So that I can choose a link
-I want to see a list of available links
-```
-adding new links
---------
-```
-As a bookmark-manager user
-So I can add my favorite websites
-I want to add links to existing list
-```
-adding tags to links
---------
-```
-As bookmark-manager user
-So I can tag links
-I want to add tags to links  
-```
-filtering links by a tags
--------
-```
-As bookmark-manager user
-So I can find a relevant link
-I want to filter links by tags
-```
-## domain model
+A challenge to create a bookmark manager, set by Makers Academy.
 
-![alt-text] [domain]
-[domain]:http://i66.tinypic.com/2iuou1g.jpg "domain model"
+Work in Progress, instructions to be added at a later date.
+
+User Stories
+------------
+
+```
+As a time-pressed user
+So that I can quickly go to web sites I regularly visit
+I would like to see a list of links on the homepage
+```
+
+```
+As a time-pressed user
+So that I can quickly find web sites I recently bookmarked
+I would like to see links in descending chronological order
+```
+
+```
+As a time-pressed user
+So that I can save a website
+I would like to add the site's address and title to my bookmark manager
+```
+
+```
+As a time-pressed user
+So that I can organise my many links into different categories for ease of search
+I would like to add tags to the links in my bookmark manager
+```
+
+```
+As a time-pressed user
+So that I can quickly find links on a particular topic
+I would like to filter links by tag
+```
+
+
+![DomModel](/image/DomModel.jpg)

@@ -1,7 +1,7 @@
 ENV['RACK_ENV'] ||= 'development'
 
 require "sinatra/base"
-require_relative "./models/data_mapper_setup"
+require_relative "data_mapper_setup"
 require 'sinatra/flash'
 
 class BookMarkManager < Sinatra::Base
@@ -20,34 +20,35 @@ get '/users/new' do
   erb :'users/new'
 end
 
-post '/users' do
-  @user = User.create(user_name: params[:user_name], password: params[:password], password_confirmation: params[:password_confirmation], email: params[:email])
+post '/users/new' do
+  @user = User.create(user_name: params[:user_name],
+            password: params[:password],
+            password_repeat: params[:password_repeat],
+            email: params[:email])
   if @user.save
     session[:user_id] = @user.id
-    redirect to('/')
+    redirect '/links/'
   else
     flash.now[:errors] = @user.errors.full_messages
     erb :'users/new'
   end
 end
 
-get '/users' do
-  erb :users
+get '/users/new' do
+  erb :users/new
 end
 
 get '/links/new' do
-  erb :new
+  erb :links/new
 end
 
 post '/links' do
-  link = Link.create(title: params[:title], url: params[:url])
-  params[:tag].split(", ").each do | tag |
-    tag = Tag.create(name: tag )
-    link.tags << tag
-    link.save
+  link = Link.create(url: params[:url], title: params[:title])
+  params[:tags].split.each do |tag|
+    link.tags << Tag.create(name: tag)
   end
-
-  redirect '/links'
+  link.save
+  redirect to('/links')
 end
 
 get '/links' do
@@ -55,11 +56,11 @@ get '/links' do
   erb :links
 end
 
-get '/tags/:tag' do
-  @links = Link.all('tags.name' => params[:tag] )
-  erb :links
-end
-
+get '/tags/:name' do
+    tag = Tag.first(name: params[:name])
+    @links = tag ? tag.links : []
+    erb :'links/index'
+  end
 
 
   run! if app_file == $0

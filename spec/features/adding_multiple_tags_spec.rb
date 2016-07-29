@@ -1,12 +1,10 @@
 feature "Adding multiple tags" do
-  scenario "checks for multiple tags" do
-    visit_and_fill
-    fill_in :tag, with: "search, homepage"
+  scenario 'adding multiple tags to each bookmark' do
+    visit_and_fill_in_link
+    fill_in :tags, with: "TV radio news"
     click_button "Add Link"
-    visit "/tags/search"
-    within "ul#links" do
-      expect(page).to have_content "search, homepage"
-    end
-  end
 
+    link = Link.first
+    expect(link.tags.map(&:name)).to include('TV', 'radio', 'news')
+  end
 end

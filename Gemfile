@@ -1,10 +1,17 @@
 source "https://rubygems.org"
-  gem 'sinatra'
-  gem 'rack'
-  gem 'rspec'
-  gem 'capybara'
-  gem 'data_mapper'
-  gem 'dm-postgres-adapter'
-  gem 'database_cleaner'
-  gem 'rake'
-  gem 'sinatra-flash'
+ruby "2.3.1"
+
+gem "data_mapper"
+gem "dm-postgres-adapter"
+gem "sinatra"
+gem "bcrypt"
+gem "rake"
+gem "sinatra-flash"
+
+group :test, :development do
+gem "rspec-sinatra"
+gem "rspec"
+gem "database_cleaner"
+gem "capybara"
+gem "pry"
+end

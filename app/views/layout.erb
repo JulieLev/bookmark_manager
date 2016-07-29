@@ -1,9 +1,14 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <title>The Bookmark Manager</title>
+    <title>Bookmark Manager</title>
   </head>
 
   <body>
+    <% if current_user %>
+      <h1>Welcome, <%= @current_user.email  %>!</h1>
+    <% end %>
+
     <% if flash[:errors] && !flash[:errors].empty? %>
       Please refer to the following errors below:
       <ul id='errors'>
@@ -13,11 +18,8 @@
       </ul>
     <% end %>
 
-    <% if current_user %>
-      <h1>Welcome, <%= @current_user.user_name  %>!</h1>
-    <% end %>
-
     <%= yield %>
+
   </body>
 
 </html>
