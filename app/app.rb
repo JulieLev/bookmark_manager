@@ -26,8 +26,7 @@ get '/users/new' do
 end
 
 post '/users/new' do
-  @user = User.new(user_name: params[:user_name],
-            password: params[:password],
+  @user = User.new(password: params[:password],
             password_confirmation: params[:password_confirmation],
             email: params[:email])
   if @user.save
