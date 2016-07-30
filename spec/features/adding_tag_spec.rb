@@ -4,6 +4,7 @@ feature "New tag" do
     visit_and_fill_in_link
     add_tag
     click_button "Add Link"
-    expect(page).to have_content "search engine"
+    link = Link.first
+    expect(link.tags.map(&:name)).to include('TV')
   end
 end

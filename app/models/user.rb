@@ -4,23 +4,21 @@ require 'dm-validations' #need this?
 class User
   include DataMapper::Resource
 
-  attr_writer :password_repeat
+  attr_reader :password
+  attr_accessor :password_confirmation
 
   property :id, Serial
   property :user_name, String
   property :email, String, required: true, unique: true
-  property :password_digest, String, length: 60
+  property :password_digest, Text
 
-  validates_format_of :email, :as => :email_address
+  validates_format_of :email, as: :email_address
   validates_uniqueness_of :email
-  validates_confirmation_of :password, :confirm => :password_repeat
+  validates_confirmation_of :password
 
   def password=(password)
+    @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
-
-  private
-
-  attr_reader :password_repeat
 
 end

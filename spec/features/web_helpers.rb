@@ -8,11 +8,13 @@ def add_tag
   fill_in 'tags', with: 'TV'
 end
 
-def sign_up(email: 'RoiRoi@gmail.com', password_repeat: 'orangepassword')
+def sign_up(email: 'RoiRoi@gmail.com',
+            password: '12345678',
+            password_confirmation: 'orangepassword')
   visit '/users/new'
   fill_in :user_name, with: "David"
   fill_in 'email', with: email
-  fill_in 'password', with: 'orangepassword'
-  fill_in 'password_repeat', with: password_repeat
+  fill_in 'password', with: password
+  fill_in 'password_confirmation', with: password_confirmation
   click_button 'Register'
 end

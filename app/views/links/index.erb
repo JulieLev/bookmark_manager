@@ -1,24 +1,13 @@
-<html>
-  <head>
-  </head>
-
+<h1> Links </h1>
   <body>
-    <ul id="links">
+    <ul id='links'>
       <% @links.each do |link| %>
-      <li>
-        title: <%= link.title %>
-        url: <%= link.url %>
-
-        <% if !link.tags.empty? %>
-          <% tag_names = [] %>
-          <% link.tags.each { |tag| tag_names << tag.name }%>
-        tags: <%= tag_names.join(", ") %>
-        <% end %>
-
-      </li>
+        <li>
+          Title: <%= link.title %>
+          URL:   <%= link.url   %>
+        </li>
       <% end %>
     </ul>
 
     <a  href="/links/new">New</a>
-  </body>
-</html>
+</body>

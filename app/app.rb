@@ -20,40 +20,40 @@ get '/users/new' do
   erb :'users/new'
 end
 
+get '/users/new' do
+  erb :'users/new'
+end
+
 post '/users/new' do
-  @user = User.create(user_name: params[:user_name],
+  @user = User.new(user_name: params[:user_name],
             password: params[:password],
-            password_repeat: params[:password_repeat],
+            password_confirmation: params[:password_confirmation],
             email: params[:email])
   if @user.save
     session[:user_id] = @user.id
-    redirect '/links/'
+    redirect '/links'
   else
     flash.now[:errors] = @user.errors.full_messages
     erb :'users/new'
   end
 end
 
-get '/users/new' do
-  erb :users/new
+get '/links' do
+  @links = Link.all
+  erb :'links/index'
 end
 
 get '/links/new' do
-  erb :links/new
+  erb :'links/new'
 end
 
 post '/links' do
   link = Link.create(url: params[:url], title: params[:title])
   params[:tags].split.each do |tag|
-    link.tags << Tag.create(name: tag)
+    link.tags << Tag.first_or_create(name: tag)
   end
   link.save
   redirect to('/links')
-end
-
-get '/links' do
-  @links = Link.all
-  erb :links
 end
 
 get '/tags/:name' do

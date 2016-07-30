@@ -1,25 +1,25 @@
-<h1> Sign Up! </h1>
+<h1>Please sign up</h1>
 
 <body>
-  <form method="post" action="/users/new">
-    <label for="user_name">User Name: </label>
+  <form action="/users/new" method="post">
+    <label for="user_name">User Name:
     <input type="text" name="user_name"
     value="<%= @user.user_name %>"
-    placeholder="Enter username">
+    placeholder="Enter username"></label>
 
-    <label for="password">Password: </label>
+    <label for="password">Password:
     <input type="password" name="password"
-    placeholder="Enter password">
+    placeholder="Enter password"></label>
 
-    <label for="password_repeat">Confirm password: </label>
-    <input type="password" name="password_repeat"
-    placeholder="Confirm password">
+    <label for="password_confirmation">Confirm password:
+    <input type="password" name="password_confirmation"
+    placeholder="Confirm password"></label>
 
-    <label for="email">Email: </label>
+    <label for="email">Email:
     <input type="email" name="email"
     value="<%= @user.email %>"
-    placeholder="Enter email" required>
+    placeholder="Enter email" required></label>
 
-    <button type="submit" name="Register" value="Register"></button>
+    <input type="submit" name="Register" value="Register">
   </form>
 </body>
